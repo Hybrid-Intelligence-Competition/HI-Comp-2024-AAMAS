@@ -16,6 +16,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery.csv.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+        <script src="js/csv_to_html_table.js"></script>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -31,8 +37,9 @@
                         <li class="nav-item"><a class="nav-link me-lg-3" href="#overview">Overview</a></li>
                         <li class="nav-item"><a class="nav-link me-lg-3" href="#challenge">Challenge</a></li>
                         <li class="nav-item"><a class="nav-link me-lg-3" href="#submission">Submission</a></li>
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="#finalists">Finalists</a></li>
                         <li class="nav-item"><a class="nav-link me-lg-3" href="#dates">Dates</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#finalists">Finalists</a></li>
+                        <li class="nav-item"><a class="nav-link me-lg-3" href="#scenarios">Scenarios</a></li>
                         <li class="nav-item"><a class="nav-link me-lg-3" href="#organization">Organization</a></li>
                     </ul>
                     <!--<button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
@@ -56,7 +63,7 @@
 
                             <h5 class="lead fw-normal text-muted mb-5">To be held in Auckland, New Zaeland, as a part of the <a href="
 https://www.aamas2024-conference.auckland.ac.nz/">AAMAS 2024</a> conference.</h5>
-                            <div class="d-flex flex-column align-items-center">
+                            <!--<div class="d-flex flex-column align-items-center">
                                 <a href="#submission"><button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0">
                                     <span class="d-flex align-items-center">
                                         <span>Submit Here!</span>
@@ -64,7 +71,7 @@ https://www.aamas2024-conference.auckland.ac.nz/">AAMAS 2024</a> conference.</h5
                                 </button></a>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <!--<div class="col-lg-2">
                         <div class="masthead-device-mockup">
                             <svg class="circle" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -93,17 +100,31 @@ https://www.aamas2024-conference.auckland.ac.nz/">AAMAS 2024</a> conference.</h5
                 </div>
             </div>
         </header>
-        <!-- Quote/testimonial aside-->
-        <aside class="text-center bg-gradient-primary-to-secondary">
-            <!-- <div class="container px-5">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-xl-8">
-                        <div class="h2 fs-1 text-white mb-4">Theme HI Comp 2024<br/> Fundamental qualities of HI teams.</div>
-                        <img src="assets/img/tnw-logo.svg" alt="..." style="height: 3rem" />
+
+                <aside class="text-center bg-gradient-primary-to-secondary"></aside>
+
+
+        <section class="bg-light" id="thankyou">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
+                    <div class="col-12 col-lg-12 text-center">
+                        <h2>Thank you!</h2><br/>
+                        <h5 class="lead fw-normal text-muted mb-5">A great thank you to all the participants for their contributions!<br/>
+                            The winner teams and all the submitted scenarios can be found <a href="#finalists">here</a>.
+                        </h5>
+                        <div id="pics-container"></div>
+                        <script>
+                        var pic_folder = "assets/pics/";
+                        var pic_nr = 11;
+                        for (let i = 1; i < pic_nr+1; i++) {
+                            var pic_addr = pic_folder + "p"+i +".jpg";
+                            $("#pics-container").append( "<a href='"+pic_addr+"'><img src='"+pic_addr+"' class='img-thumbnail' style = 'height:200px !important;'></a>" );
+                        }
+                        </script>
                     </div>
                 </div>
-            </div>-->
-        </aside>
+            </div>
+        </section>
         <!-- Basic features section-->
         <section class="bg-light" id="overview">
             <div class="container px-5">
@@ -246,14 +267,94 @@ See <a href="#submission">Submission</a> section for more information on how to 
             </div>
         </section>
 
+                
                 <aside class="text-center bg-gradient-primary-to-secondary"></aside>
 
-    <section class="bg-light" id="submission">
+       <section class="bg-light" id="finalists">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
                     <div class="col-12 col-lg-12">
                         <h2 class="text-center">Finalists and Participants</h2><br/>
-                        <p> To be announced</p>
+                        <p>
+                            <h4>1st place</h4>
+                            Team <b>Zebra State University</b>: Gilberto Antonio Marcon dos Santos (Zebra Technologies Corporation), Mahmoud Nasr (Zebra Technologies Corporation), John Meo (Applied Research Associates)<br/><br/>
+                            <h4>2nd place</h4>
+                            Team <b>Dream Team</b>: Emre Erdogan (Utrecht University), ChatGPT4 (NA)<br/><br/>
+                            <h4>3rd place</h4>
+                            Team <b>AR_TEAM</b>: Rui Prada (INESC-ID), Ann Nowé (VUB)<br/><br/>
+                        </p>
+                        <h4>All participants teams (alphabetical order)</h4>
+                        <p>
+                            <ul>
+                            <li><b>AR_TEAM</b>: Rui Prada (INESC-ID), Ann Nowé (VUB)</li>
+                            <li><b>Dream Team</b>: Emre Erdogan (Utrecht University), ChatGPT4 (NA)</li>
+                            <li><b>Kawaii</b>: Katsuhide Fujita (Tokyo University of Agriculture and Technology), Reyhan Aydogan (Ozyegin University)</li>
+                            <li><b>LouLu</b>: Xingzhou Lou (Institute of Automation, Chinese Academy of Sciences), Vera Lu (Civilization Corp.)</li>
+                            <li><b>MarkBaz</b>: Behrad Koohy (University of Southampton), Mark Towers (University of Southampton)</li>
+                            <li><b>Piha</b>: Nathaniel Sauerberg (UT Austin), Emanuel Tewolde (CMU)</li>
+                            <li><b>Zebra State University</b>: Gilberto Antonio Marcon dos Santos (Zebra Technologies Corporation), Mahmoud Nasr (Zebra Technologies Corporation), John Meo (Applied Research Associates)</li>
+                            </ul>
+
+                    </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <aside class="text-center bg-gradient-primary-to-secondary"></aside>
+
+       <section class="bg-light" id="scenarios">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
+                    <div class="col-12 col-lg-12">
+                        <h2 class="text-center">Submitted Scenarios</h2><br/>
+                        <p> In the following, a data set containing all the scenarios submitted by the competition participants is reported.
+                            </p>
+
+                        <div id="table-container"></div>
+        
+                        
+
+                        <script>
+                            function format_link(link) {
+                                if (link)
+                                    return "<a href='" + link + "' target='_blank'>" + link + "</a>";
+                                else return "";
+                            }
+
+                            CsvToHtmlTable.init({
+                                csv_path: "data/HIComp2024_AAMAS_SubmittedScenarios.csv",
+                                element: "table-container",
+                                allow_download: true,
+                                csv_options: {
+                                    separator: ",",
+                                    delimiter: '"'
+                                },
+                                datatables_options: {
+                                    paging: true,
+                                    pageLength: 1.,
+                                    lengthChange: false,
+                                    columns: [{ width: '3%' }, { width: '3%' }, { width: '3%' }, { width: '3%' }, { width: '42.5%' }, { width: '3%' }, { width: '42.5%' }]
+                                }/*,
+                                custom_formatting: [
+                                    [4, format_link]
+                                ]*/
+                            });
+                        </script>
+
+                        <p>
+                            The columns in the dataset are described as follows:
+                         <ul>
+                            <li><strong>Date:</strong> The date of submission of the scenarios (Date).</li>
+                            <li><strong>Event:</strong> The event where the scenario was submitted (String).</li>
+                            <li><strong>Team:</strong> The name of the participants team that submitted the scenario (String).</li>
+                            <li><strong>Best Case - Use Case HI Team:</strong> The HI Use Case (see Section 1 in the competition details) considered by the Team for the Best Case Scenario (String).</li>
+                            <li><strong>Best Case - Scenario:</strong> The Best Case Scenario submitted by the Team (String).</li>
+                            <li><strong>Worst Case - Use Case HI Team:</strong> The HI Use Case (see Section 1 in the competition details) considered by the Team for the Worst Case Scenario (String).</li>
+                            <li><strong>Worst Case - Scenario:</strong> The Worst Case Scenario submitted by the Team (String).</li>
+                            
+                        </ul></p>
+
                     </div>
                 </div>
             </div>
