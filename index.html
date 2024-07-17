@@ -121,16 +121,33 @@ https://www.aamas2024-conference.auckland.ac.nz/">AAMAS 2024</a> conference.</h5
                         var pic_nr = 11;
                         for (let i = 1; i < pic_nr+1; i++) {
                             var pic_addr = pic_folder + "p"+i +".jpg";
-                            $("#pics-container").append( "<div><a href='"+pic_addr+"'><img src='"+pic_addr+"' class='img-thumbnail' style = 'height:200px !important;'></a></div>" );
+                            $("#pics-container").append( "<div><a href='"+pic_addr+"'><img src='"+pic_addr+"' class='img-thumbnail'></a></div>" );
                         }
                         $(document).ready(function(){
-                          $(".owl-carousel").owlCarousel();
+                          $('.owl-carousel').owlCarousel({
+                                loop:true,
+                                margin:10,
+                                nav:true,
+                                responsive:{
+                                    0:{
+                                        items:1
+                                    },
+                                    600:{
+                                        items:3
+                                    },
+                                    1000:{
+                                        items:5
+                                    }
+                                }
+                            });
                         });
                         </script>
                     </div>
                 </div>
             </div>
         </section>
+                        <aside class="text-center bg-gradient-primary-to-secondary"></aside>
+
         <!-- Basic features section-->
         <section class="bg-light" id="overview">
             <div class="container px-5">
